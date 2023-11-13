@@ -1,0 +1,215 @@
+basePath: /api
+host: localhost:8080
+info:
+  contact: {}
+  description: This api witll generate sencer data related to fish.
+  title: Sensor data service API
+  version: "1.0"
+paths:
+  /data_generation:
+    post:
+      description: It will save data  in DB for temparature, fish, cordinates etc
+      produces:
+      - application/json
+      responses: {}
+      summary: Generate data for groups and sensors API-2
+      tags:
+      - Data generation face
+  /data_list:
+    post:
+      description: It will display whole data in database
+      produces:
+      - application/json
+      responses: {}
+      summary: show full data available in DB API-General
+      tags:
+      - Aggregate statistics
+  /group/species/{groupName}:
+    post:
+      description: shows all species in agroup that is name and count of fishes
+      parameters:
+      - description: Group name as alpha
+        in: path
+        name: groupName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: shows all species in agroup ex:alpha
+      tags:
+      - Aggregate statistics
+  /group/species/top/{codeName}/{N}:
+    post:
+      description: show top count of fish in a group
+      parameters:
+      - description: Group Name
+        in: path
+        name: codeName
+        required: true
+        type: string
+      - description: Max Count of fish you want to see
+        in: path
+        name: "N"
+        required: true
+        type: integer
+      - description: Unix timestamp for from of duration
+        in: query
+        name: from
+        type: integer
+      - description: Unix timestamp for till of duration
+        in: query
+        name: till
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: show top count of fish in a group optionaly supports duration
+      tags:
+      - Aggregate statistics
+  /group/temperature/average/{groupName}:
+    post:
+      description: It will display temperature of a groups
+      parameters:
+      - description: generate avg temperature by group name
+        in: path
+        name: groupName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: show average temperature in a group API-3.1
+      tags:
+      - Aggregate statistics
+  /group/transparency/average/{groupName}:
+    post:
+      description: It will display transparency of a groups
+      parameters:
+      - description: generate avg transparency by group name
+        in: path
+        name: groupName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: show average transparency in a group API-3.1
+      tags:
+      - Aggregate statistics
+  /group_sensor_generation:
+    post:
+      description: It will save data of group and sensors name in DataBase
+      produces:
+      - application/json
+      responses: {}
+      summary: Generate groups and sensors name API-1
+      tags:
+      - Kicke-off phase
+  /region/temperature/max:
+    post:
+      description: show maximum temprature in a min and max:x,y,z reason
+      parameters:
+      - description: ' x min cordinate'
+        in: query
+        name: xMin
+        required: true
+        type: integer
+      - description: ' x max cordinate'
+        in: query
+        name: xMax
+        required: true
+        type: integer
+      - description: ' y min cordinate'
+        in: query
+        name: yMin
+        required: true
+        type: integer
+      - description: ' y max cordinate'
+        in: query
+        name: yMax
+        required: true
+        type: integer
+      - description: ' z min cordinate'
+        in: query
+        name: zMin
+        required: true
+        type: integer
+      - description: ' z max cordinate'
+        in: query
+        name: zMax
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: show maximum temprature in a reason
+      tags:
+      - Aggregate statistics
+  /region/temperature/min:
+    post:
+      description: show minimum temprature in a min and max:x,y,z  reason
+      parameters:
+      - description: ' x min cordinate'
+        in: query
+        name: xMin
+        required: true
+        type: integer
+      - description: ' x max cordinate'
+        in: query
+        name: xMax
+        required: true
+        type: integer
+      - description: ' y min cordinate'
+        in: query
+        name: yMin
+        required: true
+        type: integer
+      - description: ' y max cordinate'
+        in: query
+        name: yMax
+        required: true
+        type: integer
+      - description: ' z min cordinate'
+        in: query
+        name: zMin
+        required: true
+        type: integer
+      - description: ' z max cordinate'
+        in: query
+        name: zMax
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: show minimum temprature in a reason
+      tags:
+      - Aggregate statistics
+  /sensor/average/temperature/{codeName}:
+    post:
+      description: Display the average temperature of a CodeName within a specified
+        duration
+      parameters:
+      - description: sensor CodeName
+        in: path
+        name: codeName
+        required: true
+        type: string
+      - description: Unix timestamp for from of duration
+        in: query
+        name: from
+        required: true
+        type: integer
+      - description: Unix timestamp for till of duration
+        in: query
+        name: till
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Show average temperature in a CodeName, e.g., alpha 1
+      tags:
+      - Aggregate statistics
+swagger: "2.0"

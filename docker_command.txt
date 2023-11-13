@@ -1,0 +1,10 @@
+// for building docker container
+docker-compose up -d --build  //dont statrt build server
+sudo docker-compose up --build  //start build server
+//show running container
+docker ps -l
+// for killing a container
+docker rm -f <container-id>
+//running app
+http://localhost:9032/api/call_center/delete_contact_submit
+
